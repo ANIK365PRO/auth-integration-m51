@@ -8,6 +8,7 @@ import Root from './Layouts/Root/Root.jsx';
 import Home from './components/Home/Home.jsx';
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
+import AuthProvider from './Contexts/AuthProvider.jsx';
 
 // export const AuthContext = createContext(null);
 // const userInfo = {
@@ -31,6 +32,9 @@ createRoot(document.getElementById('root')).render(
     {/* <AuthContext value={userInfo}>
       <RouterProvider router={router} />
     </AuthContext> */}
-    <RouterProvider router={router} />
+
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );
