@@ -1,19 +1,16 @@
 import React, { use } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import './Navbar.css'; // Assuming you have a CSS file for styling
 import { AuthContext } from '../../Contexts/AuthContext';
 // import { AuthContext } from '../../Contexts/AuthContext';
 // import { AuthContext } from '../../main';
 
 const Navbar = () => {
-  const userInfo = use(AuthContext);
+  const { user } = use(AuthContext);
+  console.log('auth custom context test: ', user);
 
   // const userInfo = use(AuthContext);
-  // console.log('userinfo in the navbar:', userInfo);
-
-  // const userInfo = use(AuthContext);
-
-  console.log('auth custom context test: ', userInfo);
+  // console.log('auth custom context test: ', userInfo);
 
   const links = (
     <>
@@ -62,7 +59,11 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user ? (
+          <a className="btn">Sign Out</a>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </div>
     </div>
   );
