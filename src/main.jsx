@@ -9,6 +9,8 @@ import Home from './components/Home/Home.jsx';
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import AuthProvider from './Contexts/AuthProvider.jsx';
+import Orders from './Orders/Orders.jsx';
+import PrivetRoute from './Routes/PrivetRoute.jsx';
 
 // export const AuthContext = createContext(null);
 // const userInfo = {
@@ -23,6 +25,15 @@ const router = createBrowserRouter([
       { index: true, Component: Home },
       { path: 'login', Component: Login },
       { path: 'register', Component: Register },
+      {
+        path: 'orders',
+        // Component: Orders
+        element: (
+          <PrivetRoute>
+            <Orders></Orders>
+          </PrivetRoute>
+        ),
+      },
     ],
   },
 ]);
