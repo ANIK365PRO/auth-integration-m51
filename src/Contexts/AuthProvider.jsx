@@ -3,6 +3,7 @@ import { AuthContext } from './AuthContext';
 
 import {
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { auth } from './../firebase.init';
@@ -18,6 +19,19 @@ const AuthProvider = ({ children }) => {
   const signInUser = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
+
+  /**
+   *{ Get the currently signed-in user}
+   */
+
+  onAuthStateChanged(auth, currentUser => {
+    if (currentUser) {
+      console.log('has current user', currentUser);
+    } else {
+      console.log('current user', currentUser);
+    }
+  });
+
   const userInfo = {
     createUser,
     signInUser,
