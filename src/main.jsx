@@ -11,6 +11,8 @@ import Register from './components/Register/Register.jsx';
 import AuthProvider from './Contexts/AuthProvider.jsx';
 import Orders from './Orders/Orders.jsx';
 import PrivetRoute from './Routes/PrivetRoute.jsx';
+import Profile from './Profile/Profile.jsx';
+import Dashboard from './Dashboard/Dashboard.jsx';
 
 // export const AuthContext = createContext(null);
 // const userInfo = {
@@ -31,6 +33,22 @@ const router = createBrowserRouter([
         element: (
           <PrivetRoute>
             <Orders></Orders>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: 'profile',
+        element: (
+          <PrivetRoute>
+            <Profile></Profile>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: 'dashboard',
+        element: (
+          <PrivetRoute>
+            <Dashboard></Dashboard>
           </PrivetRoute>
         ),
       },
